@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 12:33:49 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 15:19:41 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/11 16:01:22 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	mod_zer(t_pf *st, char *spaces, long long znak)
 {
 	char	*tmp;
 
-	if (st->specifier == 'd' && (st->precision == -1 || st->precision == 0)
+	if ((st->specifier == 'd' || st->specifier == 'i') && (st->precision == -1 || st->precision == 0 || st->precision == (int)ft_strlen(st->buffer))
 			&& st->point == 1)
 	{
 		st->buffer = ft_strjoin(spaces, st->buffer);

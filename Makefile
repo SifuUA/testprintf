@@ -6,12 +6,12 @@
 #    By: okres <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/11 14:27:01 by okres             #+#    #+#              #
-#    Updated: 2017/02/11 14:28:48 by okres            ###   ########.fr        #
+#    Updated: 2017/02/11 15:39:15 by okres            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-CC = gcc
+CC = gcc -g
 CFLAGS = -Wall -Wextra -Werror -c
 SRC =	analize1.c\
 		analize2.c\
