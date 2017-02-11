@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helpfunc3.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/11 11:32:43 by okres             #+#    #+#             */
+/*   Updated: 2017/02/11 11:33:03 by okres            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	free_s(t_pf *st)
@@ -7,8 +19,6 @@ void	free_s(t_pf *st)
 	ft_bzero(st->flag, ft_strlen(st->flag));
 	st->znak = 0;
 	ft_bzero(st->size, ft_strlen(st->size));
-//	ft_bzero(st->buffer, ft_strlen(st->buffer));
-//	st->specifier = '\0';
 }
 
 void	check_z(t_pf *st)
@@ -42,7 +52,7 @@ int		find_char(char *str, char c)
 	{
 		if (str[i] == c)
 			j++;
-	i++;
+		i++;
 	}
 	return (j);
 }

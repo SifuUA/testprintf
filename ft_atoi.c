@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 15:22:48 by okres             #+#    #+#             */
-/*   Updated: 2016/12/09 14:08:05 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/11 15:20:20 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	skip(const char *str)
 int			ft_atoi(const char *str)
 {
 	int					i;
-	unsigned long long	minus;
+	long long			minus;
 	unsigned long long	res;
 
 	res = 0;

@@ -1,13 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa_base_unsign.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/10 21:43:11 by okres             #+#    #+#             */
+/*   Updated: 2017/02/10 21:44:18 by okres            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void	nbr_to_str(unsigned long long int value, unsigned long long int base, char **str)
+void	nbr_to_str(unsigned long long int value,
+		unsigned long long int base, char **str)
 {
 	char c;
 
 	if (value >= base)
 	{
-		nbr_to_str(value/base, base, str);
-		nbr_to_str(value%base, base, str);
+		nbr_to_str(value / base, base, str);
+		nbr_to_str(value % base, base, str);
 	}
 	else
 	{
@@ -21,11 +34,12 @@ void	nbr_to_str(unsigned long long int value, unsigned long long int base, char 
 	**str = '\0';
 }
 
-char	*ft_itoa_base_unsign(unsigned long long int value, unsigned long long int base)
+char	*ft_itoa_base_unsign(unsigned long long int value,
+		unsigned long long int base)
 {
 	char	*str;
 	char	*s;
-	
+
 	str = (char*)malloc(sizeof(char) * 33);
 	*str = 0;
 	s = str;

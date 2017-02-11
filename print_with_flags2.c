@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_with_flags2.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/11 12:48:42 by okres             #+#    #+#             */
+/*   Updated: 2017/02/11 15:19:09 by okres            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void		mod_plus1(t_pf *st, char *spaces, char *zeros, char *ptr, long long znak)
+void	mod_plus1(t_pf *st, char *spaces, char *zeros, long long znak)
 {
 	char	*tmp;
 	char	*tmp1;
@@ -21,57 +33,38 @@ void		mod_plus1(t_pf *st, char *spaces, char *zeros, char *ptr, long long znak)
 	}
 	else
 	{
-		if(znak >= 0)
+		if (znak >= 0)
 			tmp = ft_strjoin("+", st->buffer);
 		else
 			tmp = ft_strjoin("-", st->buffer);
-		//ft_strdel(&(st->buffer));
 		st->buffer = tmp;
 	}
 }
 
-void		mod_plus(t_pf *st, char *spaces, char *zeros, char *ptr, long long znak)
+void	mod_plus(t_pf *st, char *spaces, char *zeros, long long znak)
 {
 	char	*tmp;
 
-		if (find(st->flag, '-') || find(st->flag, '0'))
-		{
-			if (znak >= 0)
-			{
-				if (st->buffer[0] == '0' && find(st->flag, '0'))
-				{
-					if (*(st->last_buffer) != '0')
-						(st->buffer)++;
-					tmp = ft_strjoin("+", st->buffer);
-				}
-				else	
-				{
-					if (st->buffer[ft_strlen(st->buffer) - 1] == ' ')
-						st->buffer[ft_strlen(st->buffer) - 1] = '\0';
-					tmp = ft_strjoin("+", st->buffer);
-			//if (st->width > st->precision && st->width > ft_strlen(st->buffer))
-			//	tmp[ft_strlen(tmp) - 1] = '\0';
-				}
-			st->buffer = tmp;
-			}
-		}
-		else if (ft_strlen(spaces) > 0 && zeros == NULL && spaces != NULL)
-		{
-			if (znak >= 0)
-				tmp = ft_strjoin("+", st->buffer);
-			else
-				tmp = ft_strjoin("-", st->buffer);
-			ptr++;
-			st->buffer = ft_strjoin(ptr, tmp);
-			ft_strdel(&(tmp));
-		}
+	if (find(st->flag, '-') || find(st->flag, '0'))
+		mod_plus2(st, znak);
+	else if (ft_strlen(spaces) > 0 && zeros == NULL && spaces != NULL)
+	{
+		if (znak >= 0)
+			tmp = ft_strjoin("+", st->buffer);
 		else
-			mod_plus1(st, spaces, zeros, ptr, znak);
-	if (st->specifier =='u' || st->specifier == 'x' || st->specifier =='X' || st->specifier == 'o')
+			tmp = ft_strjoin("-", st->buffer);
+		st->ptr++;
+		st->buffer = ft_strjoin(st->ptr, tmp);
+		ft_strdel(&(tmp));
+	}
+	else
+		mod_plus1(st, spaces, zeros, znak);
+	if (st->specifier == 'u' || st->specifier == 'x' || st->specifier == 'X'
+			|| st->specifier == 'o')
 		(st->buffer)++;
 }
 
-void		mod_sharp1(t_pf *st, char *tmp, int i)
+void	mod_sharp1(t_pf *st, char *tmp, int i)
 {
 	if (find(st->flag, '-'))
 	{
@@ -100,53 +93,55 @@ void		mod_sharp1(t_pf *st, char *tmp, int i)
 	}
 }
 
-void		mod_sharp(t_pf *st, char *zeros, char *spaces)
+void	mod_sharp(t_pf *st, char *zeros, char *spaces, int i)
 {
 	char	*tmp;
-	int		i;
 
 	i = 0;
-	//tmp = ft_strchr
 	if (st->specifier == 'o')
 	{
 		if (find(st->flag, '-') || find(st->flag, ' ') || find(st->flag, '0'))
 		{
-			if (find (st->flag, '-'))
+			if (find(st->flag, '-'))
 			{
 				if (st->buffer[0] != '0' && !find(st->flag, ' '))
-				{	
+				{
 					tmp = ft_strjoin("0", st->buffer);
 					st->buffer = tmp;
 					if (st->buffer[ft_strlen(st->buffer) - 1] == ' ')
 						st->buffer[ft_strlen(st->buffer) - 1] = '\0';
 				}
 			}
-			if (find (st->flag, ' '))
+			if (find(st->flag, ' '))
 				mod_sharp1(st, tmp, i);
 		}
 		else
-		{
-			if (st->width > ft_strlen(st->buffer) && zeros == NULL)
-			{
-				tmp = ft_strjoin("0", st->buffer);
-				spaces++;
-				st->buffer = ft_strjoin(spaces, tmp);
-			}
-			else if (st->precision > st->width)
-			{
-				tmp = ft_strjoin(zeros, st->buffer);
-				st->buffer = tmp;
-			}
-			else if (st->width > st->precision)
-			{
-				tmp = ft_strjoin(spaces, zeros);
-				st->buffer = ft_strjoin(tmp, st->buffer);
-			}
-			else
-				st->buffer = ft_strjoin("0", st->buffer);
-		}
+			mod_sharp5(st, zeros, spaces);
 	}
 	else
 		mod_sharp2(st, zeros, spaces);
 }
 
+void	mod_sharp5(t_pf *st, char *zeros, char *spaces)
+{
+	char	*tmp;
+
+	if (st->width > (int)ft_strlen(st->buffer) && zeros == NULL)
+	{
+		tmp = ft_strjoin("0", st->buffer);
+		spaces++;
+		st->buffer = ft_strjoin(spaces, tmp);
+	}
+	else if (st->precision > st->width)
+	{
+		tmp = ft_strjoin(zeros, st->buffer);
+		st->buffer = tmp;
+	}
+	else if (st->width > st->precision)
+	{
+		tmp = ft_strjoin(spaces, zeros);
+		st->buffer = ft_strjoin(tmp, st->buffer);
+	}
+	else
+		st->buffer = ft_strjoin("0", st->buffer);
+}

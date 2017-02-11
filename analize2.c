@@ -1,77 +1,73 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   analize2.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/10 21:14:44 by okres             #+#    #+#             */
+/*   Updated: 2017/02/11 14:32:45 by okres            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void	f_6(char cpecif, char *size, va_list vl, char **buffer)
-{
-	double		tmp;
-	size_t		value;
-	char		*ptr;
-	char		*ptr1;
-
-	if (cpecif == 'e')
-	{
-/*		if (size[0] == '\0')
-		{
-			tmp = (long double)va_arg(vl, long double);
-			value = tmp;
-			*buffer = ft_itoa_mod(value);
-			ptr = *buffer;
-			ptr1 = ft_itoa_base((tmp * ft_pow(10, num_len(tmp))), 10);
-			printf ("ptr = %s ptr1 = %s\n", ptr, ptr1);
-			ptr1 += (ft_strlen(ptr) - 1);
-			*buffer = ft_strcat(ptr, ptr1);
-			ft_strdel(&ptr);
-		}
-*/	}
-//	else if (cpecif == 'c' || cpecif == 's')
-//		f_7(cpecif, size, vl, buffer);
-}
-
-void	f_7(char cpecif, char *size, va_list vl, char **buffer, t_pf *st)
+void	f_6(char *size, va_list vl, char **buffer, t_pf *st)
 {
 	char	*tmp;
 
-	tmp = NULL;
-	if (cpecif == 'c')
+	if (size[0] == '\0')
 	{
-		if (size[0] == '\0' || size[0] == 'l')
-			**buffer = (char)va_arg(vl, int);
-	}
-	else if (cpecif == 'C')
-		f_12(cpecif, size, vl, buffer, st);
-	else if (cpecif == 's')
-	{
-		if(size[0] == '\0')
+		*buffer = va_arg(vl, char *);
+		if (*buffer == NULL)
+			*buffer = "(null)";
+		if (st->precision < (int)ft_strlen(*buffer) && st->precision > 0)
 		{
-			*buffer = va_arg(vl, char *);
-			if (*buffer == NULL)
-				*buffer = "(null)";
-			if (st->precision < ft_strlen(*buffer) && st->precision > 0)
-			{
-				tmp = ft_strnew(st->precision);
-				tmp = ft_strncpy(tmp, st->buffer, st->precision);
-				st->buffer = tmp;
-			}
-			else if (st->precision < ft_strlen(*buffer))
-			{
-				tmp = ft_strdup(*buffer);
-				tmp[st->precision] = '\0';
-				*buffer = tmp;
-			}
-			else 
-				st->precision = 0;
+			tmp = ft_strnew(st->precision);
+			tmp = ft_strncpy(tmp, st->buffer, st->precision);
+			st->buffer = tmp;
 		}
+		else if (st->precision < (int)ft_strlen(*buffer))
+		{
+			tmp = ft_strdup(*buffer);
+			tmp[st->precision] = '\0';
+			*buffer = tmp;
+		}
+		else
+			st->precision = 0;
 	}
-	else if (cpecif == 'S')
-		f_9(cpecif, size, vl, buffer, st);
 }
 
-void	f_9(char cpecif, char *size, va_list vl, char **buffer, t_pf *st)
+void	f_7(char *size, va_list vl, char **buffer, t_pf *st)
 {
-	wchar_t *s;
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = NULL;
+	if (st->specifier == 'c' || st->specifier == 'C')
+	{
+		if (size[0] == '\0' || size[0] == 'l')
+		{
+			i = va_arg(vl, int);
+			if (i == 0)
+				st->uk = 1;
+			**buffer = (char)i;
+		}
+	}
+	else if (st->specifier == 's')
+		f_6(size, vl, buffer, st);
+	else if (st->specifier == 'S')
+		f_9(vl, buffer);
+}
+
+void	f_9(va_list vl, char **buffer)
+{
+	wchar_t	*s;
 	int		i;
 	int		j;
 	char	*res;
-	
+
 	i = 0;
 	j = 0;
 	s = va_arg(vl, wchar_t*);
@@ -89,35 +85,35 @@ void	f_9(char cpecif, char *size, va_list vl, char **buffer, t_pf *st)
 	*buffer = res;
 }
 
-void	f_10(char cpecif, char *size, char **buffer, t_pf *st)
+void	f_10(char *size, char **buffer, t_pf *st)
 {
 	char *tmp;
 
-	if(size[0] == '\0')
+	if (size[0] == '\0')
 	{
 		if (*buffer == NULL)
 			*buffer = "(null)";
-		if (st->precision < ft_strlen(*buffer) && st->precision > 0)
+		if (st->precision < (int)ft_strlen(*buffer) && st->precision > 0)
 		{
 			tmp = ft_strnew(st->precision);
 			tmp = ft_strncpy(tmp, st->buffer, st->precision);
 			st->buffer = tmp;
 		}
-		else if (st->precision < ft_strlen(*buffer))
+		else if (st->precision < (int)ft_strlen(*buffer))
 		{
 			tmp = ft_strdup(*buffer);
 			tmp[st->precision] = '\0';
 			*buffer = tmp;
 		}
-		else 
+		else
 			st->precision = 0;
 	}
 }
 
-void	f_8(char cpecif, char *size, va_list vl, char **buffer, t_pf *st)
+void	f_8(va_list vl, char **buffer, t_pf *st)
 {
 	char	*tmp;
-	void*	i;
+	void	*i;
 
 	i = va_arg(vl, void*);
 	if (i == 0 && st->point == 1)
@@ -132,11 +128,4 @@ void	f_8(char cpecif, char *size, va_list vl, char **buffer, t_pf *st)
 	}
 	else
 		*buffer = ft_itoa_base_low((long long)i, 16);
-
-
-	/**buffer = ft_itoa_base_low((long long)i, 16);
-	tmp = ft_strjoin("0ax", *buffer);
-	*buffer = tmp;*/
-	
-	
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helpfunc2.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/11 11:30:59 by okres             #+#    #+#             */
+/*   Updated: 2017/02/11 14:38:18 by okres            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int		check_flag(char *str, char *flags)
@@ -19,13 +31,11 @@ int		check_flag(char *str, char *flags)
 		i++;
 	}
 	return (count > 0 ? 1 : 0);
-
 }
 
 int		find_num(char *str)
 {
 	int		i;
-	char	*res;
 
 	i = 0;
 	while (str[i])
@@ -37,22 +47,14 @@ int		find_num(char *str)
 	return (0);
 }
 
-int		two_perc(t_pf *st)
-{
-	char	*tmp;
-
-	//if (ft_strlen(st->tmp) % 2 == 1)
-		st->buffer = "%";
-	return (find_num(st->str) ? 1 : 0);
-}
-
 int		len_to_spec(char *s)
-{	
-	char	spec[] = "sSpdDioOuUxXcCdfFeEgGaApn%";
+{
+	char	*spec;
 	int		i;
 
+	spec = "sSpdDioOuUxXcCdfFeEgGaApn%";
 	i = 0;
-	while(s[i])
+	while (s[i])
 	{
 		if (find(spec, s[i]))
 			return (++i);
