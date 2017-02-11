@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:15:45 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 14:33:27 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/11 16:31:18 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ void	f_14(char *size, va_list vl, char **buffer, t_pf *st)
 	if (size[0] == '\0')
 	{
 		i = va_arg(vl, unsigned int);
-		if (i == 0 && st->point == 1)
-			*buffer = "";
+		if (i == 0 && (find(st->flag, '#') || st->point == 1))
+			*(st->buffer) = '\0';
 		else
 			*buffer = ft_itoa_base(i, 8);
 	}
