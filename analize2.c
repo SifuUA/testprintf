@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:14:44 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 14:32:45 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/11 20:51:25 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,8 @@ void	f_7(char *size, va_list vl, char **buffer, t_pf *st)
 			**buffer = (char)i;
 		}
 	}
-	else if (st->specifier == 's')
+	else if (st->specifier == 's' || st->specifier == 'S')
 		f_6(size, vl, buffer, st);
-	else if (st->specifier == 'S')
-		f_9(vl, buffer);
 }
 
 void	f_9(va_list vl, char **buffer)
@@ -114,18 +112,23 @@ void	f_8(va_list vl, char **buffer, t_pf *st)
 {
 	char	*tmp;
 	void	*i;
-
-	i = va_arg(vl, void*);
-	if (i == 0 && st->point == 1)
-	{
-		*buffer = "";
-	}
-	else if (st->width > st->precision)
-	{
-		*buffer = ft_itoa_base_low((long long)i, 16);
-		tmp = ft_strjoin("0x", *buffer);
-		*buffer = tmp;
-	}
+	
+	if (st->specifier == 'n')
+		f_17(vl, st);
 	else
-		*buffer = ft_itoa_base_low((long long)i, 16);
+	{
+		i = va_arg(vl, void*);
+		if (i == 0 && st->point == 1)
+		{
+			*buffer = "";
+		}
+		else if (st->width > st->precision)
+		{
+			*buffer = ft_itoa_base_low((long long)i, 16);
+			tmp = ft_strjoin("0x", *buffer);
+			*buffer = tmp;
+		}
+		else
+			*buffer = ft_itoa_base_low((long long)i, 16);
+	}
 }

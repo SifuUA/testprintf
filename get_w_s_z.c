@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 22:00:31 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 15:14:32 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/11 20:52:16 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*get_space(t_pf *st)
 	n_str = NULL;
 	if (st->precision == -1)
 		st->precision = 0;
-	if (st->specifier == 'c' && *(st->buffer) == '\0' && st->width == 0)
+	if (st->specifier == 'c' && st->precision != 0)
 		return (n_str);
 	if (st->precision > (int)ft_strlen(st->buffer) && st->specifier != 's' &&
 			st->specifier != 'c' && *(st->buffer) != '%')

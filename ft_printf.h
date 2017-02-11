@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 14:11:53 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 15:20:30 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/11 20:40:39 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct		s_pf
 	int				precision;
 	char			*size;
 	char			specifier;
+	size_t			*n;
 }					t_pf;
 
 int					ft_printf(const char *restrict format, ...);
@@ -99,7 +100,6 @@ void				f_5(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_6(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_7(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_8(va_list vl, char **buffer, t_pf *st);
-void				f_9(va_list vl, char **buffer);
 void				f_10(char *size, char **buffer, t_pf *st);
 void				f_11(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_12(char *size, va_list vl, char **buffer, t_pf *st);
@@ -107,6 +107,7 @@ void				f_13(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_14(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_15(char *size, va_list vl, char **buffer);
 void				f_16(char *size, va_list vl, char **buffer, t_pf *st);
+void				f_17(va_list vl, t_pf *st);
 
 void				modif_buff(t_pf *st);
 void				modif_buff_1(t_pf *st, char	*spaces, char *zeros);

@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 12:33:49 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 16:01:22 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/11 21:13:04 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	mod_zer(t_pf *st, char *spaces, long long znak)
 {
 	char	*tmp;
 
-	if ((st->specifier == 'd' || st->specifier == 'i') && (st->precision == -1 || st->precision == 0 || st->precision == (int)ft_strlen(st->buffer))
+	if ((st->specifier == 'd' || st->specifier == 'i') && (st->precision == -1
+				|| st->precision == 0 || st->precision == (int)ft_strlen(st->buffer))
 			&& st->point == 1)
 	{
 		st->buffer = ft_strjoin(spaces, st->buffer);
@@ -122,14 +123,15 @@ void	modif_buff(t_pf *st)
 	long long	znak;
 
 	a = '\0';
-	if (find(st->buffer, '-'))
+	if (find(st->buffer, '-') && st->specifier != 'c')
 	{
 		(st->buffer) += 1;
 		znak = -1;
 	}
 	if (st->specifier == 'c' && (*st->buffer) == '\0' && st->width == 0)
 		return ;
-	if (st->specifier == '%' || (*st->buffer) == '%')
+	if ((st->specifier == '%' || (*st->buffer) == '%')
+			&& st->specifier != 'c' )
 	{
 		if (find_char(st->str, '%'))
 			st->buffer = "%";

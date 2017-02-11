@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:08:23 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 14:36:26 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/11 16:49:00 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	f_1(char *size, va_list vl, char **buffer, t_pf *st)
 	else if (st->specifier == 'c' || st->specifier == 'C' ||
 			st->specifier == 's' || st->specifier == 'S')
 		f_7(size, vl, buffer, st);
-	else if (st->specifier == 'p')
+	else if (st->specifier == 'p' || st->specifier == 'n')
 		f_8(vl, buffer, st);
 }
 

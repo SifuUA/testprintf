@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:20:07 by okres             #+#    #+#             */
-/*   Updated: 2017/02/10 21:20:47 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/11 20:29:27 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,25 @@ void	f_16(char *size, va_list vl, char **buffer, t_pf *st)
 			== 't')
 		*buffer = ft_itoa_base_unsign_low(va_arg(vl, unsigned long long int),
 				16);
+}
+
+void	f_17(va_list vl, t_pf *st)
+{
+//	size_t		*i;
+	signed char	*c;
+	int			a;
+	
+	a = ft_strlen(st->res);
+	if (st->size[0] == 'h' && st->size[1] == 'h')
+	{
+		c = (signed char *)va_arg(vl, void*);
+		*c = a;
+	}
+	else
+	{
+		st->n = (size_t *)va_arg(vl, void*);
+		*(st->n) = a;
+	}
+//	if (st->buffer)
+//		free(st->buffer);
 }
