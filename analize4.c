@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:20:07 by okres             #+#    #+#             */
-/*   Updated: 2017/02/12 18:02:33 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/12 22:51:17 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,27 +64,32 @@ void	f_17(va_list vl, t_pf *st)
 
 void	bit_move(va_list vl, t_pf *st)
 {
-	int		i;
-	char	s[3];
+	int				i;
+	unsigned char	s[3];
+	unsigned char	z[4];
 
 	i = va_arg(vl, int);
-	if (i <= 128)
+	if (i < 128)
 		*(st->buffer) = i;
-	else if (i <= 2048)
+	else if (i < 2048)
 	{
 		s[0] = (i >> 6) + 192;
 		s[1] = i << 2;
 		s[1] = (s[1] >> 2) + 128;
 		s[2] = 0;
-		st->buffer = s;
+		st->buffer = ft_strjoin(st->buffer, (char *)s);
 	}
 	else if (i > 2048)
 	{
-		s[0] = (i >> 12) + 224;
-		s[1] = i << 2;
-		s[1] = (s[1] >> 2) + 128;
-		s[2] = 0;
-		st->buffer = s;
+		z[0] = (i >> 12) + 224;
+		z[1] = i >> 6;
+		z[1] = z[1] << 2;
+		z[1] = z[1] >> 2;
+	   	z[1] += 128;
+		z[2] = i << 2;
+		z[2] = (z[2] >> 2) + 128;
+		z[3] = 0;
+		st->buffer = ft_strjoin(st->buffer, (char *)z);
 	}
 }
 
