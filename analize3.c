@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:15:45 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 16:47:15 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/12 12:51:47 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	f_11(char *size, va_list vl, char **buffer, t_pf *st)
 	else if (size[0] == 'h' && size[1] == 'h')
 		*buffer = ft_itoa_base((unsigned short int)va_arg(vl, int), 10);
 	else if (size[0] == 'h')
-		*buffer = ft_itoa_base((short int)(va_arg(vl, int)), 10);
+		*buffer = ft_itoa_base_unsign((unsigned short int)(va_arg(vl, int)), 10);
 	else if (size[0] == 'l')
 		*buffer = ft_itoa_base(va_arg(vl, long long int), 10);
 	else if (size[0] == 'j')
@@ -117,15 +117,18 @@ void	f_14(char *size, va_list vl, char **buffer, t_pf *st)
 		*buffer = ft_itoa_base_unsign(va_arg(vl, unsigned long int), 8);
 }
 
-void	f_15(char *size, va_list vl, char **buffer)
+void	f_15(char *size, va_list vl, char **buffer, t_pf *st)
 {
-	unsigned int i;
+	unsigned long long int i;
 
 	i = 0;
 	if (size[0] == '\0')
 	{
-		i = va_arg(vl, unsigned int);
-		*buffer = ft_itoa_base(i, 8);
+		i = va_arg(vl, unsigned long long int);
+		if (i == 0 && (find(st->flag, '#') || st->point == 1))
+			*(st->buffer) = '\0';
+		else
+			*buffer = ft_itoa_base_unsign(i, 8);
 	}
 	else if (size[0] == 'h' && size[1] == 'h')
 		*buffer = ft_itoa_base_unsign((unsigned short int)(va_arg(vl, int)), 8);

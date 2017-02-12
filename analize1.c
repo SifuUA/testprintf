@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:08:23 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 16:49:00 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/12 13:14:56 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	f_1(char *size, va_list vl, char **buffer, t_pf *st)
 	else if (st->specifier == 'c' || st->specifier == 'C' ||
 			st->specifier == 's' || st->specifier == 'S')
 		f_7(size, vl, buffer, st);
-	else if (st->specifier == 'p' || st->specifier == 'n')
+	else if (st->specifier == 'p' || st->specifier == 'n' || st->specifier == 'b')
 		f_8(vl, buffer, st);
 }
 
@@ -49,19 +49,28 @@ void	f_2(char *size, va_list vl, char **buffer, t_pf *st)
 	else if (st->specifier == 'o')
 		f_14(size, vl, buffer, st);
 	else if (st->specifier == 'O')
-		f_15(size, vl, buffer);
+		f_15(size, vl, buffer, st);
 	else
 		f_3(size, vl, buffer, st);
 }
 
 void	f_3(char *size, va_list vl, char **buffer, t_pf *st)
 {
+	unsigned int i;
+
+	i = 0;
 	if (st->specifier == 'x')
 		f_16(size, vl, buffer, st);
 	else if (st->specifier == 'X')
 	{
 		if (size[0] == '\0')
-			*buffer = ft_itoa_base(va_arg(vl, unsigned int), 16);
+		{
+			i = va_arg(vl, unsigned int);
+			if (i == 0 && (find(st->flag, '#') || st->point == 1))
+				*(st->buffer) = '\0';
+			else
+			*buffer = ft_itoa_base(i, 16);
+		}
 		else if (size[0] == 'h' && size[1] == 'h')
 			*buffer = ft_itoa_base_unsign((unsigned char)(va_arg(vl, int)), 16);
 		else if (size[0] == 'h')

@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 14:04:42 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 15:20:27 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/12 12:11:14 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	modif_buff_3(t_pf *st, char *spaces, char *zeros, long long znak)
 	if (st->flag[0] == '\0')
 	{
 		if (st->specifier != 'c' && st->specifier != 's' &&
-				*(st->buffer) != '%')
+				*(st->buffer) != '%' && st->specifier != 'C')
 		{
 			if (znak >= 0)
 				modif_buff_1(st, spaces, zeros);

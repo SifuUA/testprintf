@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 14:11:53 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 20:40:39 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/12 15:32:35 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int					ft_isdigit(int c);
 size_t				ft_pow(size_t nb, size_t pow);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
-void				ft_putstr_m(char const *s, int p);
+void				ft_putstr_m(char const *s, int p, t_pf *st);
 char				*ft_strcat(char *restrict str1, const char *restrict str2);
 void				ft_strdel(char **as);
 char				*ft_strdup(const char *str);
@@ -61,6 +61,7 @@ char				*ft_strchr(const char *s, int c);
 int					ft_isascii(int c);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
+int					ft_isalpha(int c);
 
 char				*ft_itoa_mod(int n);
 char				*ft_itoa_base(long long int value, long long int base);
@@ -105,9 +106,11 @@ void				f_11(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_12(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_13(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_14(char *size, va_list vl, char **buffer, t_pf *st);
-void				f_15(char *size, va_list vl, char **buffer);
+void				f_15(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_16(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_17(va_list vl, t_pf *st);
+void				f_18(va_list vl, t_pf *st);
+void				bit_move(va_list vl, t_pf *st);
 
 void				modif_buff(t_pf *st);
 void				modif_buff_1(t_pf *st, char	*spaces, char *zeros);

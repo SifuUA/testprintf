@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:20:07 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 20:29:27 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/12 14:56:41 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	f_16(char *size, va_list vl, char **buffer, t_pf *st)
 	if (size[0] == '\0')
 	{
 		i = va_arg(vl, unsigned int);
-		if (i == 0 && st->point == 1)
-			*buffer = "";
+		if (i == 0 && (find(st->flag, '#') || st->point == 1))
+			*(st->buffer) = '\0';
 		else
 			*buffer = ft_itoa_base_low(i, 16);
 	}
@@ -61,3 +61,23 @@ void	f_17(va_list vl, t_pf *st)
 //	if (st->buffer)
 //		free(st->buffer);
 }
+
+void	bit_move(va_list vl, t_pf *st)
+{
+	int		i;
+	char	s[3];
+
+	i = va_arg(vl, int);
+	s[0] = (i >> 6) + 192;
+	s[1] = i << 2;
+	s[2] = (s[1] >> 2) + 128;
+
+	*(st->buffer) = i;
+
+}
+
+void	f_18(va_list vl, t_pf *st)
+{
+	st->buffer = ft_itoa_base_low(va_arg(vl, int), 2);
+}
+

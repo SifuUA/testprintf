@@ -28,6 +28,7 @@ SRC =	analize1.c\
 		ft_itoa_base_unsign_low.c\
 		ft_itoa_mod.c\
 		ft_pow.c\
+		ft_isalpha.c\
 		ft_printf.c\
 		ft_putchar.c\
 		ft_putstr.c\

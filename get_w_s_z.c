@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 22:00:31 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 20:52:16 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/12 15:43:57 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int		get_width(t_pf *st)
 {
 	int w_str;
 
-	if ((st->specifier == 's' || st->specifier == 'c' || *(st->buffer) == '%')
-			&& st->width > (int)ft_strlen(st->buffer))
+	if ((st->specifier == 's' || st->specifier == 'c' || st->specifier == 'C' ||
+				*(st->buffer) == '%') && st->width > (int)ft_strlen(st->buffer))
 		w_str = st->width;
 	else if (st->width > st->precision && st->width >
 			(int)ft_strlen(st->buffer))
@@ -49,7 +49,7 @@ char	*get_zero(t_pf *st, char a)
 	if (zero_c > 0)
 	{
 		n_str = ft_strnew(zero_c);
-		a = (st->specifier == 'c' || st->specifier == 's') ? ' ' : '0';
+		a = (st->specifier == 'c' || st->specifier == 's' || st->specifier == 'C') ? ' ' : '0';
 		while (i < zero_c)
 		{
 			n_str[i] = a;
@@ -57,6 +57,28 @@ char	*get_zero(t_pf *st, char a)
 		}
 	}
 	return (n_str);
+}
+
+int		help_g(t_pf *st)
+{
+	int		i;
+	int		j;
+	int		count;
+
+	j = 0;
+	count = 0;
+	i = get_width(st) - ft_strlen(st->buffer);
+	while (st->buffer[j])
+	{
+		if (ft_isalpha(st->buffer[j]))
+			count++;
+		j++;
+	}
+	if (i > 0 && st->precision == 0 && st->specifier == '\0'
+			&& count > 0)
+		i += count;
+	return (i);
+
 }
 
 char	*get_space(t_pf *st)
@@ -69,13 +91,13 @@ char	*get_space(t_pf *st)
 	n_str = NULL;
 	if (st->precision == -1)
 		st->precision = 0;
-	if (st->specifier == 'c' && st->precision != 0)
+	if ((st->specifier == 'c' || st->specifier == 'C') && st->precision != 0)
 		return (n_str);
 	if (st->precision > (int)ft_strlen(st->buffer) && st->specifier != 's' &&
-			st->specifier != 'c' && *(st->buffer) != '%')
+			st->specifier != 'c' && st->specifier != 'C' && *(st->buffer) != '%')
 		space_c = get_width(st) - st->precision;
 	else
-		space_c = get_width(st) - ft_strlen(st->buffer);
+		space_c = help_g(st);
 	n_str = ft_strnew(space_c);
 	if (st->specifier == 'c' && *(st->buffer) == '\0')
 		space_c--;

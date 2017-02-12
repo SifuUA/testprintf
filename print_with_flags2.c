@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 12:48:42 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 15:19:09 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/12 12:39:25 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void	mod_plus(t_pf *st, char *spaces, char *zeros, long long znak)
 	else
 		mod_plus1(st, spaces, zeros, znak);
 	if (st->specifier == 'u' || st->specifier == 'x' || st->specifier == 'X'
-			|| st->specifier == 'o')
+			|| st->specifier == 'o' || st->specifier == 'p' ||st->specifier
+		   	== 'O' || st->specifier == 's' || st->specifier == 'S')
 		(st->buffer)++;
 }
 
@@ -98,7 +99,9 @@ void	mod_sharp(t_pf *st, char *zeros, char *spaces, int i)
 	char	*tmp;
 
 	i = 0;
-	if (st->specifier == 'o')
+	if (st->specifier == 'd' || st->specifier == 'D')
+		return ;
+	if (st->specifier != 'x' && st->specifier != 'X' )
 	{
 		if (find(st->flag, '-') || find(st->flag, ' ') || find(st->flag, '0'))
 		{
@@ -142,6 +145,6 @@ void	mod_sharp5(t_pf *st, char *zeros, char *spaces)
 		tmp = ft_strjoin(spaces, zeros);
 		st->buffer = ft_strjoin(tmp, st->buffer);
 	}
-	else
+	else if (st->specifier != 'x' && st->specifier != 'X')
 		st->buffer = ft_strjoin("0", st->buffer);
 }

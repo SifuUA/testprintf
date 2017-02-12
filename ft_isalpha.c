@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/04 18:38:18 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 21:35:51 by okres            ###   ########.fr       */
+/*   Created: 2016/11/28 19:44:48 by okres             #+#    #+#             */
+/*   Updated: 2016/12/07 17:28:14 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr_m(char const *s, int p, t_pf *st)
+int		ft_isalpha(int c)
 {
-	int		i;
-
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
-	{
-		ft_putchar(s[i]);
-		if (p == 1 && s[i + 2] == '\0')
-		{
-			ft_putchar('\0');
-			p = 0;
-		}
-		i++;
-	}
-	if (st->specifier == 'C' && p == 1)
-		ft_putchar('\0');
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	else
+		return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:38:32 by okres             #+#    #+#             */
-/*   Updated: 2017/02/10 21:39:32 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/12 15:20:11 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int		fill_struct(t_pf *st, va_list vl)
 {
-	st->a_spec = "sSpdDioOuUxXcCdfFeEgGaApn%";
+	int			i;
+
+	i = 0;
+	st->a_spec = "sSpdDioOuUxXcCdfFeEgGaApnb%";
 	st->a_sizes = "llLhlhhjzt";
 	st->a_flags = "-+ #0";
 	fill_flags(st, st->a_flags);
@@ -31,7 +34,14 @@ int		fill_struct(t_pf *st, va_list vl)
 		fill_size(&(st->str), st->a_sizes, st->size, st);
 		if (!ft_isdigit(*(st->str)) && !find_mod(st->a_spec, st->a_sizes,
 					st->a_flags, *(st->str)) && st->p == 0)
+		{
+			if (!find(st->a_flags, *(st->str)))
+			{
+				st->buffer[i] = *(st->str);
+				i++;
+			}
 			(st->str)++;
+		}
 	}
 	st->specifier = *(st->str);
 	f_1(st->size, vl, &(st->buffer), st);

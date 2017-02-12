@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:51:08 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 14:35:32 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/12 15:55:23 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int		ft_printf(const char *restrict format, ...)
 	memory_allocate(st);
 	st->str = ft_strdup((char *)format);
 	ft_printf_1(st, vl);
-	ft_putstr_m(st->res, st->uk);
+	ft_putstr_m(st->res, st->uk, st);
 	j = 0;
-	if (st->specifier == 'c' && (st->last_buffer == NULL || *(st->last_buffer)
-				== '\0' || *(st->last_buffer) == '0'))
+	if ((st->specifier == 'c' || st->specifier == 'C') && (st->last_buffer ==
+				NULL || *(st->last_buffer) == '\0' || *(st->last_buffer) == '0'))
 		j = 1;
 	return (ft_strlen(st->res) + j);
 }
@@ -48,7 +48,7 @@ void	ft_printf_1(t_pf *st, va_list vl)
 	j = 0;
 	while (*(st->str))
 	{
-		check_z(st);
+		//check_z(st);
 		if (*(st->str) == '%')
 		{
 			(st->str)++;

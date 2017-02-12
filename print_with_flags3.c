@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 14:01:54 by okres             #+#    #+#             */
-/*   Updated: 2017/02/11 14:57:47 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/12 12:26:23 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void		mod_sharp2(t_pf *st, char *zeros, char *spaces)
 {
 	if (st->specifier == 'x' || st->specifier == 'X')
 	{
-		if (*(st->buffer) == '\0')
+		if (*(st->buffer) == '\0' && st->point == 1)
 			return ;
 		if (ft_atoi(st->buffer) == 0 && st->point != 1)
 		{
