@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 12:33:49 by okres             #+#    #+#             */
-/*   Updated: 2017/02/12 16:11:19 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/12 17:49:23 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,8 @@ void	mod_sp(t_pf *st, char *spaces, char *zeros, long long znak)
 		return ;
 	if (st->specifier == 'u' || st->specifier == 'c' || st->specifier == 'p'
 			|| st->specifier == 's' || st->specifier == 'S' || st->specifier == 'o'
-			|| st->specifier == 'O' || st->specifier == 'x' || st->specifier == 'X')
+			|| st->specifier == 'O' || st->specifier == 'x' || st->specifier == 'X'
+			|| st->specifier == 'C')
 		return ;
 	if (find(st->flag, '-') == 1 || find(st->flag, '0') == 1)
 	{
@@ -133,7 +134,7 @@ void	modif_buff(t_pf *st)
 	if ((st->specifier == 'c' || st->specifier == 'C') && (*st->buffer) == '\0' && st->width == 0)
 		return ;
 	if ((st->specifier == '%' || (*st->buffer) == '%')
-			&& st->specifier != 'c' && st->specifier != 'C' && *(st->size) == '\0' && *(st->flag) == '\0')
+			&& st->specifier != 'c' && st->specifier != 'C' && *(st->size) == '\0')
 	{
 		if (find_char(st->str, '%'))
 			st->buffer = "%";
