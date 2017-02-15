@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:08:23 by okres             #+#    #+#             */
-/*   Updated: 2017/02/15 21:40:54 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 21:51:25 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	f_4(char *size, va_list vl, char **buffer, t_pf *st)
 	char		*ptr;
 	int			tmp1;
 
-	if (st->specifier == 'f')
+	if (st->specifier == 'f' || st->specifier == 'F')
 	{
 		if (size[0] == '\0')
 		{
