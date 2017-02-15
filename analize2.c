@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:14:44 by okres             #+#    #+#             */
-/*   Updated: 2017/02/15 16:09:34 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 17:06:47 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	f_6(char *size, va_list vl, char **buffer, t_pf *st)
 		else
 			st->precision = 0;
 	}
-		//f_19(vl, st);
+	else
+		f_19(vl, st);
 }
 
 void	f_7(char *size, va_list vl, char **buffer, t_pf *st)
