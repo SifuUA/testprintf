@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/10 21:20:07 by okres             #+#    #+#             */
-/*   Updated: 2017/02/15 18:56:34 by okres            ###   ########.fr       */
+/*   Created: 2017/02/15 21:54:56 by okres             #+#    #+#             */
+/*   Updated: 2017/02/15 21:54:58 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,5 @@ void	f_19(va_list vl, t_pf *st)
 
 void	f_18(va_list vl, t_pf *st)
 {
-    st->buffer = ft_itoa_base_low(va_arg(vl, int), 2);
+	st->buffer = ft_itoa_base_low(va_arg(vl, int), 2);
 }

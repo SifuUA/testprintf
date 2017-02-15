@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/11 14:04:42 by okres             #+#    #+#             */
-/*   Updated: 2017/02/12 12:11:14 by okres            ###   ########.fr       */
+/*   Created: 2017/02/15 22:19:37 by okres             #+#    #+#             */
+/*   Updated: 2017/02/15 22:19:38 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,14 @@ void	mod_plus2(t_pf *st, long long znak)
 		}
 		st->buffer = tmp;
 	}
+}
+
+void	help_sharp(t_pf *st)
+{
+	char	*tmp;
+
+	tmp = ft_strjoin("0", st->buffer);
+	st->buffer = tmp;
+	if (st->buffer[ft_strlen(st->buffer) - 1] == ' ')
+		st->buffer[ft_strlen(st->buffer) - 1] = '\0';
 }

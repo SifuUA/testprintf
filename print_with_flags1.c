@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 12:33:49 by okres             #+#    #+#             */
-/*   Updated: 2017/02/15 11:29:58 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 22:17:21 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,15 +91,14 @@ void	mod_sp1(t_pf *st, char *spaces, char *zeros, long long znak)
 void	mod_sp(t_pf *st, char *spaces, char *zeros, long long znak)
 {
 	char	*tmp;
-	int		i;
 
-	i = 0;
+	st->i = 0;
 	if (st->specifier == '\0' || st->specifier == '%')
 		return ;
 	if (st->specifier == 'u' || st->specifier == 'c' || st->specifier == 'p'
-			|| st->specifier == 's' || st->specifier == 'S' || st->specifier == 'o'
-			|| st->specifier == 'O' || st->specifier == 'x' || st->specifier == 'X'
-			|| st->specifier == 'C')
+			|| st->specifier == 's' || st->specifier == 'S' ||
+			st->specifier == 'o' || st->specifier == 'O' || st->specifier ==
+			'x' || st->specifier == 'X' || st->specifier == 'C')
 		return ;
 	if (find(st->flag, '-') == 1 || find(st->flag, '0') == 1)
 	{
@@ -108,9 +107,9 @@ void	mod_sp(t_pf *st, char *spaces, char *zeros, long long znak)
 			if (st->buffer[0] == ' ')
 				return ;
 			tmp = ft_strjoin(" ", st->buffer);
-			i = ft_strlen(tmp);
-			if (tmp[i - 1] == ' ')
-				tmp[i - 1] = '\0';
+			st->i = ft_strlen(tmp);
+			if (tmp[st->i - 1] == ' ')
+				tmp[st->i - 1] = '\0';
 			st->buffer = tmp;
 		}
 	}
@@ -131,16 +130,12 @@ void	modif_buff(t_pf *st)
 		(st->buffer) += 1;
 		znak = -1;
 	}
-	if ((st->specifier == 'c' || st->specifier == 'C') && (*st->buffer) == '\0' && st->width == 0)
+	if ((st->specifier == 'c' || st->specifier == 'C') && (*st->buffer) ==
+			'\0' && st->width == 0)
 		return ;
-	if ((st->specifier == '%' || (*(st->buffer)) == '%')
-			&& st->specifier != 'c' && st->specifier != 'C' && *(st->size) == '\0')
-	{
-		if (find_char(st->str, '%'))
-			st->buffer = "%";
-		else
-			st->buffer = "\0";
-	}
+	if ((st->specifier == '%' || (*(st->buffer)) == '%') && st->specifier !=
+			'c' && st->specifier != 'C' && *(st->size) == '\0')
+		st->buffer = find_char(st->str, '%') ? "%" : "\0";
 	spaces = get_space(st);
 	zeros = get_zero(st, a);
 	st->ptr = ft_strjoin(spaces, zeros);

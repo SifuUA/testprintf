@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 14:11:53 by okres             #+#    #+#             */
-/*   Updated: 2017/02/15 21:34:09 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 22:27:22 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void				check_z(t_pf *s);
 int					find_char(char *str, char c);
 
 int					fill_struct(t_pf *st, va_list vl);
+void				fill_help(t_pf *st);
 void				fill_flags(t_pf *st, char *flags);
 void				fill_width(char **str, int *width, va_list vl, t_pf *st);
 void				fill_precision(char **str, int *precision, va_list vl,
@@ -98,7 +99,6 @@ void				f_1(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_2(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_3(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_4(char *size, va_list vl, char **buffer, t_pf *st);
-void				f_5(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_6(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_7(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_8(va_list vl, char **buffer, t_pf *st);
@@ -142,6 +142,7 @@ void				mod_sp1(t_pf *st, char *spaces, char *zeros,
 void				mod_sp2(t_pf *st, char *spaces, char *zeros,
 					long long znak);
 void				mod_sharp(t_pf *st, char *zeros, char *spaces, int i);
+void				help_sharp(t_pf *st);
 void				mod_sharp1(t_pf *st, char *tmp, int i);
 void				mod_sharp2(t_pf *st, char *zeros, char *spaces);
 void				mod_sharp3(t_pf *st, char *tmp, int i);

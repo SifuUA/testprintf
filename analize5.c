@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/15 18:25:25 by okres             #+#    #+#             */
-/*   Updated: 2017/02/15 21:19:22 by okres            ###   ########.fr       */
+/*   Created: 2017/02/15 22:32:40 by okres             #+#    #+#             */
+/*   Updated: 2017/02/15 22:32:43 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	f_17(va_list vl, t_pf *st)
 {
- 	char	*ptr;
-	size_t	len;
-	
+	char		*ptr;
+	size_t		len;
+
 	len = ft_strlen(st->res);
 	ptr = (char*)va_arg(vl, void*);
 	if (st->size[0] == '\0')
@@ -32,5 +32,5 @@ void	f_17(va_list vl, t_pf *st)
 	else
 		*ptr = (size_t)len;
 	if (st->buffer)
-        free(st->buffer);
+		free(st->buffer);
 }

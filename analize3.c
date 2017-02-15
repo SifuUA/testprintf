@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:15:45 by okres             #+#    #+#             */
-/*   Updated: 2017/02/12 12:51:47 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 22:01:29 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	f_11(char *size, va_list vl, char **buffer, t_pf *st)
 	else if (size[0] == 'h' && size[1] == 'h')
 		*buffer = ft_itoa_base((unsigned short int)va_arg(vl, int), 10);
 	else if (size[0] == 'h')
-		*buffer = ft_itoa_base_unsign((unsigned short int)(va_arg(vl, int)), 10);
+		*buffer = ft_itoa_base_unsign((unsigned short int)(va_arg(vl, int)),
+				10);
 	else if (size[0] == 'l')
 		*buffer = ft_itoa_base(va_arg(vl, long long int), 10);
 	else if (size[0] == 'j')

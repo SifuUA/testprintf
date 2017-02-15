@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/11 11:32:43 by okres             #+#    #+#             */
-/*   Updated: 2017/02/12 16:17:57 by okres            ###   ########.fr       */
+/*   Created: 2017/02/15 22:30:21 by okres             #+#    #+#             */
+/*   Updated: 2017/02/15 22:30:29 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,6 @@ void	free_s(t_pf *st)
 	ft_bzero(st->flag, ft_strlen(st->flag));
 	st->znak = 0;
 	ft_bzero(st->size, ft_strlen(st->size));
-}
-
-void	check_z(t_pf *st)
-{
-	int		i;
-	char	*tmp;
-
-	i = 0;
-	tmp = NULL;
-	while (st->str[i])
-	{
-		if (st->str[i] == 'Z')
-		{
-			(st->str) += (i + 1);
-			tmp = ft_strjoin(st->res, "Z");
-			free(st->res);
-			st->res = tmp;
-		}
-		i++;
-	}
 }
 
 int		find_char(char *str, char c)
@@ -55,4 +35,22 @@ int		find_char(char *str, char c)
 		i++;
 	}
 	return (j);
+}
+
+void	fill_help(t_pf *st)
+{
+	int i;
+
+	i = 0;
+	if (!find(st->a_flags, *(st->str)))
+	{
+		while (*(st->str) != '%' && *(st->str))
+		{
+			st->buffer[i] = *(st->str);
+			i++;
+			(st->str)++;
+		}
+	}
+	if (*(st->str) != '%' && *(st->str))
+		(st->str)++;
 }

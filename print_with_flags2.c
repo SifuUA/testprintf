@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 12:48:42 by okres             #+#    #+#             */
-/*   Updated: 2017/02/15 19:01:03 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 22:10:51 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void	mod_sharp(t_pf *st, char *zeros, char *spaces, int i)
 	char	*tmp;
 
 	i = 0;
+	tmp = NULL;
 	if (st->specifier == 'd' || st->specifier == 'D')
 		return ;
 	if (st->specifier != 'x' && st->specifier != 'X')
@@ -108,12 +109,7 @@ void	mod_sharp(t_pf *st, char *zeros, char *spaces, int i)
 			if (find(st->flag, '-'))
 			{
 				if (st->buffer[0] != '0' && !find(st->flag, ' '))
-				{
-					tmp = ft_strjoin("0", st->buffer);
-					st->buffer = tmp;
-					if (st->buffer[ft_strlen(st->buffer) - 1] == ' ')
-						st->buffer[ft_strlen(st->buffer) - 1] = '\0';
-				}
+					help_sharp(st);
 			}
 			if (find(st->flag, ' '))
 				mod_sharp1(st, tmp, i);
