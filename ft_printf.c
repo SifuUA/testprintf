@@ -5,6 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/15 15:55:13 by okres             #+#    #+#             */
+/*   Updated: 2017/02/15 15:55:15 by okres            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:51:08 by okres             #+#    #+#             */
 /*   Updated: 2017/02/15 14:09:02 by okres            ###   ########.fr       */
 /*                                                                            */
@@ -28,7 +40,7 @@ int		ft_printf(const char *restrict format, ...)
 	if ((st->specifier == 'c' || st->specifier == 'C') && (st->last_buffer ==
 				NULL || *(st->last_buffer) == '\0' || *(st->last_buffer) == '0'))
 		j = 1;
-	return (ft_strlen(st->res) + j);
+	return (ft_strlen(st->res) + st->uk);
 }
 
 void	ft_printf_2(t_pf *st)
