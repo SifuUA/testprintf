@@ -39,7 +39,6 @@ void	f_17(va_list vl, t_pf *st)
 	
 	len = ft_strlen(st->res);
 	ptr = (char*)va_arg(vl, void*);
-	printf("ptr %p/n", &ptr);
 	if (st->size[0] == '\0')
 		*ptr = (int)len;
 	else if (st->size[0] == 'h' && st->size[1] == 'h')
