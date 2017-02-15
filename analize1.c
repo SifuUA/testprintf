@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:08:23 by okres             #+#    #+#             */
-/*   Updated: 2017/02/12 23:02:53 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 18:57:11 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	f_1(char *size, va_list vl, char **buffer, t_pf *st)
 	else if (st->specifier == 'c' || st->specifier == 'C' ||
 			st->specifier == 's' || st->specifier == 'S')
 		f_7(size, vl, buffer, st);
-	else if (st->specifier == 'p' || st->specifier == 'n' || st->specifier == 'b')
+	else if (st->specifier == 'p' || st->specifier == 'n' ||
+			st->specifier == 'b')
 		f_8(vl, buffer, st);
 }
 
@@ -69,7 +70,7 @@ void	f_3(char *size, va_list vl, char **buffer, t_pf *st)
 			if (i == 0 && (find(st->flag, '#') || st->point == 1))
 				*(st->buffer) = '\0';
 			else
-			*buffer = ft_itoa_base(i, 16);
+				*buffer = ft_itoa_base(i, 16);
 		}
 		else if (size[0] == 'h' && size[1] == 'h')
 			*buffer = ft_itoa_base_unsign((unsigned char)(va_arg(vl, int)), 16);

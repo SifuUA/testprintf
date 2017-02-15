@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 14:11:53 by okres             #+#    #+#             */
-/*   Updated: 2017/02/15 15:52:07 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 18:17:17 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 typedef struct		s_pf
 {
+	int				i;
 	char			*str;
 	char			*buffer;
 	char			*res;
@@ -39,7 +40,6 @@ typedef struct		s_pf
 	int				precision;
 	char			*size;
 	char			specifier;
-	size_t			*n;
 }					t_pf;
 
 int					ft_printf(const char *restrict format, ...);
