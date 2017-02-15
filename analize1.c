@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:08:23 by okres             #+#    #+#             */
-/*   Updated: 2017/02/15 18:57:11 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 21:40:54 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	f_4(char *size, va_list vl, char **buffer, t_pf *st)
 	double		tmp;
 	size_t		value;
 	char		*ptr;
-	char		*ptr1;
+	int			tmp1;
 
 	if (st->specifier == 'f')
 	{
@@ -97,9 +97,15 @@ void	f_4(char *size, va_list vl, char **buffer, t_pf *st)
 			value = tmp;
 			*buffer = ft_itoa_mod(value);
 			ptr = *buffer;
-			ptr1 = ft_itoa_base((tmp * ft_pow(10, num_len(tmp))), 10);
-			ptr1 += (ft_strlen(ptr) - 1);
-			*buffer = ft_strcat(ptr, ptr1);
+			st->float_dec = ft_itoa_base((tmp * ft_pow(10, num_len(tmp))), 10);
+			st->float_dec += (ft_strlen(ptr) - 1);
+			*buffer = ft_strcat(ptr, st->float_dec);
+			tmp1 = 6 - (int)ft_strlen(st->float_dec);
+			while (tmp1 > 0)
+			{
+				st->buffer = ft_strjoin(st->buffer, "0");
+				tmp1--;
+			}
 		}
 		else if (size[0] == 'L')
 			f_5(size, vl, buffer, st);

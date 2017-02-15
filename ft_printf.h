@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 14:11:53 by okres             #+#    #+#             */
-/*   Updated: 2017/02/15 18:17:17 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 21:34:09 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 typedef struct		s_pf
 {
 	int				i;
+	char			*float_dec;
 	char			*str;
 	char			*buffer;
 	char			*res;
