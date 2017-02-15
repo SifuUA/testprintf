@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 12:33:49 by okres             #+#    #+#             */
-/*   Updated: 2017/02/12 17:54:36 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 11:29:58 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void	modif_buff(t_pf *st)
 	}
 	if ((st->specifier == 'c' || st->specifier == 'C') && (*st->buffer) == '\0' && st->width == 0)
 		return ;
-	if ((st->specifier == '%' || (*st->buffer) == '%')
+	if ((st->specifier == '%' || (*(st->buffer)) == '%')
 			&& st->specifier != 'c' && st->specifier != 'C' && *(st->size) == '\0')
 	{
 		if (find_char(st->str, '%'))

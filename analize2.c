@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:14:44 by okres             #+#    #+#             */
-/*   Updated: 2017/02/12 16:37:50 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 15:05:19 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	f_6(char *size, va_list vl, char **buffer, t_pf *st)
 		else
 			st->precision = 0;
 	}
+		//f_19(vl, st);
 }
 
 void	f_7(char *size, va_list vl, char **buffer, t_pf *st)
@@ -56,7 +57,10 @@ void	f_7(char *size, va_list vl, char **buffer, t_pf *st)
 			**buffer = (char)i;
 		}
 		else if (size[0] == 'l')
-			bit_move(vl, st);
+		{
+			i = va_arg(vl, int);
+			st->buffer =  bit_move(i);
+		}
 	} 
 	else if (st->specifier == 's' || st->specifier == 'S')
 		f_6(size, vl, buffer, st);

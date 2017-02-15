@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 14:11:53 by okres             #+#    #+#             */
-/*   Updated: 2017/02/12 15:32:35 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 10:57:13 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,8 @@ void				f_15(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_16(char *size, va_list vl, char **buffer, t_pf *st);
 void				f_17(va_list vl, t_pf *st);
 void				f_18(va_list vl, t_pf *st);
-void				bit_move(va_list vl, t_pf *st);
+void				f_19(va_list vl, t_pf *st);
+char				*bit_move(int i);
 
 void				modif_buff(t_pf *st);
 void				modif_buff_1(t_pf *st, char	*spaces, char *zeros);

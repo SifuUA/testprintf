@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:51:08 by okres             #+#    #+#             */
-/*   Updated: 2017/02/12 17:22:55 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 14:09:02 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	ft_printf_1(t_pf *st, va_list vl)
 	j = 0;
 	while (*(st->str))
 	{
-		//check_z(st);
 		if (*(st->str) == '%')
 		{
 			(st->str)++;
@@ -62,7 +61,7 @@ void	ft_printf_1(t_pf *st, va_list vl)
 				st->str = st->tmp;
 			else
 				st->str = st->tmp + j;
-			st->res = ft_strjoin(st->res, st->buffer);
+			st->res = ft_strjoin(st->res,st->buffer);
 			free_s(st);
 		}
 		else

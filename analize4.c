@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:20:07 by okres             #+#    #+#             */
-/*   Updated: 2017/02/12 22:51:17 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 15:05:09 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,22 @@ void	f_17(va_list vl, t_pf *st)
 //		free(st->buffer);
 }
 
-void	bit_move(va_list vl, t_pf *st)
+char	*bit_move(int i)
 {
-	int				i;
 	unsigned char	s[3];
 	unsigned char	z[4];
-
-	i = va_arg(vl, int);
+	char			*res;
+	
+	res = ft_strnew(3);
 	if (i < 128)
-		*(st->buffer) = i;
+		*res = i;
 	else if (i < 2048)
 	{
 		s[0] = (i >> 6) + 192;
 		s[1] = i << 2;
 		s[1] = (s[1] >> 2) + 128;
 		s[2] = 0;
-		st->buffer = ft_strjoin(st->buffer, (char *)s);
+		res = ft_strdup((char *)s);
 	}
 	else if (i > 2048)
 	{
@@ -89,8 +89,9 @@ void	bit_move(va_list vl, t_pf *st)
 		z[2] = i << 2;
 		z[2] = (z[2] >> 2) + 128;
 		z[3] = 0;
-		st->buffer = ft_strjoin(st->buffer, (char *)z);
+		res = ft_strdup((char *)z);
 	}
+	return (res);
 }
 
 void	f_18(va_list vl, t_pf *st)
@@ -98,3 +99,19 @@ void	f_18(va_list vl, t_pf *st)
 	st->buffer = ft_itoa_base_low(va_arg(vl, int), 2);
 }
 
+/*void	f_19(va_list vl, t_pf *st)
+{
+	int		j;
+	int		tmp;
+	int		*i;
+	
+	j = 0;
+	tmp = 0;
+	i = (int *)va_arg(vl, char *);
+	while (i[j])
+	{
+		tmp = i[j];
+		st->buffer = ft_strjoin(st->buffer, bit_move(tmp));
+		j++;
+	}
+}*/

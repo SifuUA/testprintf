@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:38:32 by okres             #+#    #+#             */
-/*   Updated: 2017/02/12 15:20:11 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 11:33:47 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		fill_struct(t_pf *st, va_list vl)
 {
-	int			i;
+	int	i;
 
 	i = 0;
 	st->a_spec = "sSpdDioOuUxXcCdfFeEgGaApnb%";
@@ -37,10 +37,15 @@ int		fill_struct(t_pf *st, va_list vl)
 		{
 			if (!find(st->a_flags, *(st->str)))
 			{
-				st->buffer[i] = *(st->str);
-				i++;
+				while (*(st->str) != '%' && *(st->str))
+				{
+					st->buffer[i] = *(st->str);
+					i++;
+					(st->str)++;
+				}
 			}
-			(st->str)++;
+			if (*(st->str) != '%' && *(st->str))
+				(st->str)++;
 		}
 	}
 	st->specifier = *(st->str);
