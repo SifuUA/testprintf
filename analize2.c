@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:14:44 by okres             #+#    #+#             */
-/*   Updated: 2017/02/15 15:52:32 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/15 16:09:34 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,12 @@ void	f_7(char *size, va_list vl, char **buffer, t_pf *st)
 		{
 			i = va_arg(vl, int);
 			if (i == 0)
+			{
 				st->uk += 1;
-			**buffer = (char)i;
+				*buffer = ft_strjoin("\0", st->buffer);
+			}
+			else
+				**buffer = (char)i;
 		}
 		else if (size[0] == 'l')
 		{
