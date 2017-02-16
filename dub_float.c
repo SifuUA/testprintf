@@ -14,9 +14,19 @@
 
 void	f_4_dop_1(t_pf *st)
 {
-		st->dec[6] = '\0';
-		st->buffer = ft_strcat(st->buffer, st->dec);
+	int	tmp;
 
+	tmp = 0;
+	if (ft_strlen(st->dec) > 6)
+		st->dec[6] = '\0';
+	st->i = (int)ft_strlen(st->dec);
+	st->buffer = ft_strcat(st->buffer, st->dec);
+	tmp = st->precision > st->i ? st->precision - st->i : 6 - st->i;
+	while (tmp > 0)
+		{
+			st->buffer = ft_strjoin(st->buffer, "0");
+			tmp--;
+		}
 }
 
 void	f_4_dop(t_pf *st, char *ptr)
