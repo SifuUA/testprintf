@@ -20,7 +20,7 @@ void	f_6(char *size, va_list vl, char **buffer, t_pf *st)
 	{
 		*buffer = va_arg(vl, char *);
 		if (*buffer == NULL)
-			*buffer = RED"(null)"RESET;
+			*buffer = "(null)";
 		if (st->precision < (int)ft_strlen(*buffer) && st->precision > 0)
 		{
 			tmp = ft_strnew(st->precision);
