@@ -14,6 +14,8 @@
 
 void	f_4_dop_1(t_pf *st)
 {
+		st->dec[6] = '\0';
+		st->buffer = ft_strcat(st->buffer, st->dec);
 
 }
 
@@ -34,7 +36,7 @@ void	f_4_dop(t_pf *st, char *ptr)
 		}
 	}
 	else
-		f4_dop_1(st);
+		f_4_dop_1(st);
 }
 
 size_t		all_len(double num)
