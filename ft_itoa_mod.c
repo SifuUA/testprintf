@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 17:10:42 by okres             #+#    #+#             */
-/*   Updated: 2017/02/16 12:37:57 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/16 14:14:33 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,18 @@ static void	write_in_ar(long long int n, char *ptr, int i)
 	}
 }
 
-char		*ft_itoa_mod(long long int n)
+char		*ft_itoa_mod(long long int n, int znak)
 {
 	char	*ptr;
 	int		i;
 
 	if (n == 0)
-		return (ft_strdup("0."));
+	{
+		if (znak > 0)
+			return (ft_strdup("0."));
+		else
+			return (ft_strdup("-0."));
+	}
 	i = count_of_words(n);
 	ptr = (char*)malloc(sizeof(char) * i + 2);
 	if (!ptr)

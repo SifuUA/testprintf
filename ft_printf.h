@@ -6,18 +6,25 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 14:11:53 by okres             #+#    #+#             */
-/*   Updated: 2017/02/16 12:31:23 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/16 14:48:09 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdint.h>
 # include <stdio.h>
+
+# define RED     "\x1b[31m"
+# define GREEN   "\x1b[32m"
+# define YELLOW  "\x1b[33m"
+# define BLUE    "\x1b[34m"
+# define MAGENTA "\x1b[35m"
+# define CYAN    "\x1b[36m"
+# define RESET   "\x1b[0m"
 
 typedef struct		s_pf
 {
@@ -64,7 +71,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 int					ft_isalpha(int c);
 
-char				*ft_itoa_mod(long long int n);
+char				*ft_itoa_mod(long long int n, int znak);
 char				*ft_itoa_base(long long int value, long long int base);
 char				*ft_itoa_base_low(long long int value, long long int base);
 char				*ft_itoa_base_unsign(unsigned long long int value,

@@ -86,14 +86,18 @@ void	f_4(char *size, va_list vl, char **buffer, t_pf *st)
 	double		tmp;
 	long long	value;
 	char		*ptr;
+	int			znak;
 	
+	znak = 1;
 	if (st->specifier == 'f' || st->specifier == 'F')
 	{
-		if (size[0] == '\0')
+		if (size[0] == '\0' || size[0] == 'L')
 		{
 			tmp = (double)va_arg(vl, double);
+			if (tmp < 0)
+				znak = -znak;
 			value = tmp;
-			*buffer = ft_itoa_mod(value);
+			*buffer = ft_itoa_mod(value, znak);
 			value = len_first(value);
 			st->dec = ft_itoa_base_unsign(all_len(tmp), 10);
 			st->dec += value;

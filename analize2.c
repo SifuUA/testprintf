@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:14:44 by okres             #+#    #+#             */
-/*   Updated: 2017/02/15 22:00:54 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/16 14:58:37 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	f_6(char *size, va_list vl, char **buffer, t_pf *st)
 	{
 		*buffer = va_arg(vl, char *);
 		if (*buffer == NULL)
-			*buffer = "(null)";
+			*buffer = RED"(null)"RESET;
 		if (st->precision < (int)ft_strlen(*buffer) && st->precision > 0)
 		{
 			tmp = ft_strnew(st->precision);
