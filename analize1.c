@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 21:08:23 by okres             #+#    #+#             */
-/*   Updated: 2017/02/15 23:05:15 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/16 10:50:36 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,47 +79,5 @@ void	f_3(char *size, va_list vl, char **buffer, t_pf *st)
 		else if (size[0] == 'l' || size[0] == 'j' || size[0] == 'z' ||
 				size[0] == 't')
 			*buffer = ft_itoa_base_unsign(va_arg(vl, unsigned long int), 16);
-	}
-}
-
-void	f_4_dop(t_pf *st, char *ptr)
-{
-	int tmp;
-
-	tmp = 0;
-	st->i = (int)ft_strlen(st->float_dec);
-	st->buffer = ft_strcat(ptr, st->float_dec);
-		tmp = st->precision > st->i ? st->precision - st->i : 6 - st->i;
-		while (tmp > 0)
-		{
-			st->buffer = ft_strjoin(st->buffer, "0");
-			tmp--;
-		}
-}
-
-void	f_4(char *size, va_list vl, char **buffer, t_pf *st)
-{
-	double		tmp;
-	size_t		value;
-	char		*ptr;
-	
-	if (st->specifier == 'f' || st->specifier == 'F')
-	{
-		if (size[0] == '\0')
-		{
-			tmp = (double)va_arg(vl, double);
-			value = tmp;
-			*buffer = ft_itoa_mod(value);
-			ptr = *buffer;
-			st->float_dec = ft_itoa_base((tmp * ft_pow(10, num_len(tmp))), 10);
-			st->float_dec += (ft_strlen(ptr) - 1);
-			if (st->precision >= 0 && st->precision <= (int)ft_strlen(st->float_dec))
-			{
-				st->float_dec[st->precision] = '\0';
-				st->buffer = ft_strcat(ptr, st->float_dec);
-			}
-			else
-				f_4_dop(st, ptr);
-		}
 	}
 }

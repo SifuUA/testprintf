@@ -6,7 +6,7 @@
 #    By: okres <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/11 14:27:01 by okres             #+#    #+#              #
-#    Updated: 2017/02/15 18:25:55 by okres            ###   ########.fr        #
+#    Updated: 2017/02/16 10:52:25 by okres            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC =	analize1.c\
 		analize3.c\
 		analize4.c\
 		analize5.c\
+		dub_float.c\
 		fill.c\
 		ft_atoi.c\
 		ft_bzero.c\
