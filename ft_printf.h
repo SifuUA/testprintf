@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 14:11:53 by okres             #+#    #+#             */
-/*   Updated: 2017/02/16 14:48:09 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/16 16:32:24 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_pf
 	char			*res;
 	char			*ptr;
 	long long		znak;
+	int				znak1;
 	int				point;
 	char			*tmp;
 	char			*last_buffer;
@@ -120,6 +121,7 @@ void				f_17(va_list vl, t_pf *st);
 void				f_18(va_list vl, t_pf *st);
 void				f_19(va_list vl, t_pf *st);
 char				*bit_move(int i);
+void				e_convert(t_pf *st);
 
 void				modif_buff(t_pf *st);
 void				modif_buff_1(t_pf *st, char	*spaces, char *zeros);
