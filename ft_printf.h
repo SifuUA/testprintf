@@ -6,7 +6,7 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 14:11:53 by okres             #+#    #+#             */
-/*   Updated: 2017/02/16 11:33:05 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/16 12:31:23 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 int					ft_isalpha(int c);
 
-char				*ft_itoa_mod(int n);
+char				*ft_itoa_mod(long long int n);
 char				*ft_itoa_base(long long int value, long long int base);
 char				*ft_itoa_base_low(long long int value, long long int base);
 char				*ft_itoa_base_unsign(unsigned long long int value,

@@ -6,13 +6,13 @@
 /*   By: okres <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 17:10:42 by okres             #+#    #+#             */
-/*   Updated: 2017/02/10 21:45:26 by okres            ###   ########.fr       */
+/*   Updated: 2017/02/16 12:31:58 by okres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	count_of_words(int n)
+static int	count_of_words(long long int n)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ static int	count_of_words(int n)
 	return (i);
 }
 
-static void	write_in_ar(int n, char *ptr, int i)
+static void	write_in_ar(long long int n, char *ptr, int i)
 {
 	if (n < 0)
 	{
@@ -43,13 +43,11 @@ static void	write_in_ar(int n, char *ptr, int i)
 	}
 }
 
-char		*ft_itoa_mod(int n)
+char		*ft_itoa_mod(long long int n)
 {
 	char	*ptr;
 	int		i;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
 	if (n == 0)
 		return (ft_strdup("0"));
 	i = count_of_words(n);

@@ -84,7 +84,7 @@ size_t		len_first(long long num)
 void	f_4(char *size, va_list vl, char **buffer, t_pf *st)
 {
 	double		tmp;
-	size_t		value;
+	long long	value;
 	char		*ptr;
 	
 	if (st->specifier == 'f' || st->specifier == 'F')
